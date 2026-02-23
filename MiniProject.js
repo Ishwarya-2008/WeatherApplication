@@ -6,7 +6,7 @@ window.onload = function () {
 document.addEventListener("keydown",function(event){
     if(event.key === "Enter"){
         event.preventDefault();
-        findWeather();
+        findWeather()
         document.querySelector(".title").style.display="none";
         document.querySelector(".main").style.display = "inline-block";
 
