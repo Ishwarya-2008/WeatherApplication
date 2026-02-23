@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API</title>
+    <link rel="stylesheet" href="MiniProject.css">
+    <script src="https://kit.fontawesome.com/d7df01ffeb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="header">Live Weather Update</h1>
+    <div class="title">
+        <img src="images/frontimage-removebg-preview.png" class="frontImg">
+        <div id="search">
+            <div class="inputDiv">
+                <input type="text" id="input" placeholder="Enter the name of the city">
+            </div>
+            <div class="iconDiv">
+                <button onclick="findWeather()" value="submit" class="searchbtn">Search</button>
+            </div>
+        </div>
+        <div class="sunny">
+            <div id="mood1">
+                <h3 id="climate1"></h3>
+                <img id="sun1" src="">
+                <h2 id="temp1"></h2>
+                <h3 id="dateTime1"></h3>
+            </div>
+            <div id="details1">
+                <div class="weatherCondition">
+                    <div class="Humidity">
+                        <img src="images/humidity-removebg-preview.png" id="subImage">
+                        <div id="humidity"></div>
+                        <p>Humidity</p>
+                    </div>
+                    <div class="wind">
+                        <img src="images/wind-speed-removebg-preview.png" id="subImage">
+                        <div id="wind"></div>
+                        <p>Wind Speed</p>
+                    </div>
+                    <div class="pressure">
+                        <img src="images/wind-pressure-removebg-preview.png" id="subImage">
+                        <div id="pressure"></div>
+                        <p>Wind Pressure</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <button class="backArrow">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <div class="sunny">
+            <div id="mood">
+                <h5 id="city"></h5>
+                <h3 id="climate"></h3>
+                <img id="sun" src="">
+                <h2 id="temp"></h2>
+                <h3 id="dateTime"></h3>
+            </div>
+            <div id="details">
+                <div class="weatherCondition">
+                    <div class="Humidity">
+                        <img src="images/humidity-removebg-preview.png" id="subImage">
+                        <div id="humidity1"></div>
+                        <p>Humidity</p>
+                    </div>
+                    <div class="wind">
+                        <img src="images/wind-speed-removebg-preview.png" id="subImage">
+                        <div id="wind1"></div>
+                        <p>Wind Speed</p>
+                    </div>
+                    <div class="pressure">
+                        <img src="images/wind-pressure-removebg-preview.png" id="subImage">
+                        <div id="pressure1"></div>
+                        <p>Wind Pressure</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="forecast">
+            <div class="day1">
+                <h1></h1>
+                <h6></h6>
+                <img src="" class="forecastIcon1">
+                <h6></h6>
+                <h6></h6>
+            </div>
+            <div class="day2">
+                <h1></h1>
+                <h6></h6>
+                <img src="" class="forecastIcon1">
+                <h6></h6>
+                <h6></h6>
+            </div>
+            <div class="day3">
+                <h1></h1>
+                <h6></h6>
+                <img src="" class="forecastIcon1">
+                <h6></h6>
+                <h6></h6>
+            </div>
+            <div class="day4">
+                <h1></h1>
+                <h6></h6>
+                <img src="" class="forecastIcon1">
+                <h6></h6>
+                <h6></h6>
+            </div>
+        </div>
+    </div>
+    <script src="MiniProject.js"></script>
+</body>
+
+</html>
