@@ -48,7 +48,7 @@ function findWeather(city) {
     let index = city_Name[0].toUpperCase()+city_Name.slice(1);
     console.log(index);
 
-    let API_key = CONFIG.ACCUWEATHER_API_KEY;
+    let API_key = "a";
 
     let url = "https://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + API_key + "&q=" + city_Name;
 
