@@ -45,8 +45,8 @@ function findWeather(city) {
 
     let city_Name = city || document.getElementById("input").value;
     console.log("City:", city_Name)
-    let index = city_Name[0].toUpperCase() + city_Name.slice(1);
-    console.log(index);
+    // let index = city_Name[0].toUpperCase() + city_Name.slice(1);
+    // console.log(index);
 
     let API_key = window.CONFIG?.ACCUWEATHER_API_KEY;
 
