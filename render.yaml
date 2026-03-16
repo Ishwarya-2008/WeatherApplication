@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: weather-app
+    env: static
+    buildCommand: echo "const CONFIG = { ACCUWEATHER_API_KEY: '${ACCUWEATHER_API_KEY}' };" > config.js
+    staticPublishPath: .
+    envVars:
+      - key: ACCUWEATHER_API_KEY
+        sync: false
