@@ -3,21 +3,21 @@ let defaultCity = "tenkasi";
 window.onload = function () {
     findWeather(defaultCity);
 };
-document.addEventListener("keydown",function(event){
-    if(event.key === "Enter"){
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
         event.preventDefault();
         findWeather()
-        document.querySelector(".title").style.display="none";
+        document.querySelector(".title").style.display = "none";
         document.querySelector(".main").style.display = "inline-block";
 
     }
 });
 
 document.querySelector(".iconDiv").addEventListener("click", () => {
-        event.preventDefault();
-        findWeather();
-        document.querySelector(".title").style.display="none";
-        document.querySelector(".main").style.display = "inline-block";
+    event.preventDefault();
+    findWeather();
+    document.querySelector(".title").style.display = "none";
+    document.querySelector(".main").style.display = "inline-block";
 });
 
 function findWeather(city) {
@@ -27,28 +27,28 @@ function findWeather(city) {
         day: "numeric",
         month: "short"
     });
-    let hours=""
-    if(today.getHours()>12){
+    let hours = ""
+    if (today.getHours() > 12) {
         hours = "PM"
     }
-    else{
+    else {
         hours = "AM"
     }
-    let time = today.getHours()+":"+today.getMinutes()+" "+hours;
+    let time = today.getHours() + ":" + today.getMinutes() + " " + hours;
     console.log(time)
 
-    document.getElementById("dateTime").textContent =day+","+datePart+" | "+ time;
-    console.log(day+","+datePart+"  |  "+ time);
+    document.getElementById("dateTime").textContent = day + "," + datePart + " | " + time;
+    console.log(day + "," + datePart + "  |  " + time);
 
-    document.getElementById("dateTime1").textContent =day+","+datePart+" | "+ time;
-    console.log(day+","+datePart+"  |  "+ time);
+    document.getElementById("dateTime1").textContent = day + "," + datePart + " | " + time;
+    console.log(day + "," + datePart + "  |  " + time);
 
     let city_Name = city || document.getElementById("input").value;
     console.log("City:", city_Name)
-    let index = city_Name[0].toUpperCase()+city_Name.slice(1);
+    let index = city_Name[0].toUpperCase() + city_Name.slice(1);
     console.log(index);
 
-    let API_key = process.env.ACCUWEATHER_API_KEY;
+    let API_key = CONFIG.ACCUWEATHER_API_KEY;
 
     let url = "https://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + API_key + "&q=" + city_Name;
 
@@ -74,7 +74,7 @@ function findWeather(city) {
                     document.getElementById("temp").innerHTML =
                         `<span class="big">${weatherData[0].Temperature.Metric.Value}</span><span class="small">°C</span>`;
 
-                        document.getElementById("temp1").innerHTML =
+                    document.getElementById("temp1").innerHTML =
                         `<span class="big">${weatherData[0].Temperature.Metric.Value}</span><span class="small">°C</span>`;
 
                     document.getElementById("climate").innerText = weatherData[0].WeatherText;
@@ -93,7 +93,7 @@ function findWeather(city) {
                         condition == "clouds and sun" ||
                         condition == "sunny") {
                         document.getElementById("sun").src = "images/partlycloud.png";
-                        document.getElementById("sun1").src = "images/partlycloud.png"; 
+                        document.getElementById("sun1").src = "images/partlycloud.png";
                         imgsrc = "images/partlycloud.png";
                         let forecastIcons = document.querySelectorAll(".forecastIcon1");
                         for (let i = 0; i < forecastIcons.length; i++) {
@@ -115,7 +115,7 @@ function findWeather(city) {
 
                     }
                     else if (condition == "light rain" ||
-                        condition == "rain"||
+                        condition == "rain" ||
                         condition == "moderate rain" ||
                         condition == "heavy rain" ||
                         condition == "shower rain" ||
@@ -126,17 +126,17 @@ function findWeather(city) {
                         imgsrc = "images/rain.png";
                         let forecastIcons = document.querySelectorAll(".forecastIcon1");
                         for (let i = 0; i < forecastIcons.length; i++) {
-                        forecastIcons[i].src = imgsrc;
+                            forecastIcons[i].src = imgsrc;
+                        }
                     }
-                    }
-                    else if ( condition == "a shower" || condition == "showers"){
+                    else if (condition == "a shower" || condition == "showers") {
                         document.getElementById("sun").src = "images/shower.png";
                         document.getElementById("sun1").src = "images/shower.png";
                         imgsrc = "images/shower.png";
                         let forecastIcons = document.querySelectorAll(".forecastIcon1");
                         for (let i = 0; i < forecastIcons.length; i++) {
-                        forecastIcons[i].src = imgsrc;
-                    }
+                            forecastIcons[i].src = imgsrc;
+                        }
                     }
                     else if (condition == "thunderstorm" ||
                         condition == "thunderstorm with rain" ||
@@ -146,26 +146,26 @@ function findWeather(city) {
                         imgsrc = "images/thunderstorm.png";
                         let forecastIcons = document.querySelectorAll(".forecastIcon1");
                         for (let i = 0; i < forecastIcons.length; i++) {
-                        forecastIcons[i].src = imgsrc;
+                            forecastIcons[i].src = imgsrc;
+                        }
                     }
-                    }
-                    else if(condition == "dreary"){
+                    else if (condition == "dreary") {
                         document.getElementById("sun").src = "images/gloomy.png";
                         document.getElementById("sun1").src = "images/gloomy.png";
                         imgsrc = "images/raining-cloud2.png";
                         let forecastIcons = document.querySelectorAll(".forecastIcon1");
                         for (let i = 0; i < forecastIcons.length; i++) {
-                        forecastIcons[i].src = imgsrc;
+                            forecastIcons[i].src = imgsrc;
+                        }
                     }
-                    }
-                    else{
-                        imgsrc="images/partlycloud.png"
+                    else {
+                        imgsrc = "images/partlycloud.png"
                     }
 
 
                     let windSpeed = weatherData[0].Wind?.Speed?.Metric?.Value;
-                    document.getElementById("wind").innerText =(windSpeed ?? "N/A") + " km/h";
-                    document.getElementById("wind1").innerText =(windSpeed ?? "N/A") + " km/h";
+                    document.getElementById("wind").innerText = (windSpeed ?? "N/A") + " km/h";
+                    document.getElementById("wind1").innerText = (windSpeed ?? "N/A") + " km/h";
 
                     document.getElementById("humidity").innerText = (weatherData[0].RelativeHumidity ?? "N/A") + " %";
                     document.getElementById("humidity1").innerText = (weatherData[0].RelativeHumidity ?? "N/A") + " %";
@@ -201,14 +201,14 @@ function findWeather(city) {
                                 let maxTemp = dayData.Temperature.Maximum.Value;
                                 let description = dayData.Day.IconPhrase;
                                 console.log(description);
-                                
+
                                 let forecastImg = "";
                                 let cond = description.trim().toLowerCase();
-                            
+
                                 if (cond == "partly sunny" ||
                                     cond == "mostly sunny" ||
                                     cond == "partly cloudy" ||
-                                    cond == "intermittent clouds"||
+                                    cond == "intermittent clouds" ||
                                     cond == "partly bright" ||
                                     cond == "mild" ||
                                     cond == "few clouds" ||
@@ -224,7 +224,7 @@ function findWeather(city) {
                                     forecastImg = "images/mostlycloud.png";
                                 }
                                 else if (cond == "light rain" ||
-                                    cond == "rain"||
+                                    cond == "rain" ||
                                     cond == "moderate rain" ||
                                     cond == "heavy rain" ||
                                     cond == "shower rain") {
@@ -235,20 +235,20 @@ function findWeather(city) {
                                     cond == "thunderstorm with drizzle") {
                                     forecastImg = "images/thunderstorm.png";
                                 }
-                                else if (cond == "a shower" || cond == "showers"){
+                                else if (cond == "a shower" || cond == "showers") {
                                     forecastImg = "images/shower.png";
                                 }
-                                else if( cond == "dreary"){
+                                else if (cond == "dreary") {
                                     forecastImg = "images/raining-cloud2.png";
                                 }
                                 else {
                                     forecastImg = "images/partlycloud.png";
                                 }
-                            
+
                                 let div = document.querySelector(".forecast .day" + (i + 1));
                                 if (div) {
-                                    div.querySelector("h1").innerText = dayStr+","+datestr;
-                                    div.querySelector(".forecastIcon1").src = forecastImg; 
+                                    div.querySelector("h1").innerText = dayStr + "," + datestr;
+                                    div.querySelector(".forecastIcon1").src = forecastImg;
                                     div.querySelectorAll("h6")[1].innerText = description;
                                     div.querySelectorAll("h6")[2].innerText = `${minTemp}°C / ${maxTemp}°C`;
                                 }
@@ -258,17 +258,17 @@ function findWeather(city) {
                 });
         })
         .catch(error => console.log("Error".error))
-        // .catch()
-        // .then(error=>{ 
-        //     console.error("Error:",error);
-        //     let errorMessage = document.getElementById("input")
-        //     errorMessage.style.border = "2px solid red";
-        //     document.body.append(errorMessage);
-        //     document.querySelector(".main").style.display = "none";
-        //     return;
-        // })
+    // .catch()
+    // .then(error=>{ 
+    //     console.error("Error:",error);
+    //     let errorMessage = document.getElementById("input")
+    //     errorMessage.style.border = "2px solid red";
+    //     document.body.append(errorMessage);
+    //     document.querySelector(".main").style.display = "none";
+    //     return;
+    // })
 }
 document.querySelector(".backArrow").addEventListener("click", () => {
-        document.querySelector(".title").style.display="inline-block";
-        document.querySelector(".main").style.display = "none";
+    document.querySelector(".title").style.display = "inline-block";
+    document.querySelector(".main").style.display = "none";
 });
