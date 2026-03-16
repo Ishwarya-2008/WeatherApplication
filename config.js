@@ -1,3 +1,0 @@
-const CONFIG = {
-    ACCUWEATHER_API_KEY: '__ACCUWEATHER_API_KEY__'
-};
